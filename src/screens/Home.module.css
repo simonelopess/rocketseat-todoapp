@@ -1,0 +1,129 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh; 
+}
+
+.container header {
+    background-color: var(--gray-700);
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .content {
+    bottom: 30px;
+    width: 736px;
+    max-width: 100%;
+    position: relative;
+}
+
+.container .content form {
+    width: 100%;
+    height: 54px;
+    gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+}   
+
+.container .content form input {
+    height: 100%;
+    width: 638px;
+    background-color: var(--gray-500);
+    border: none;
+    border-radius: 8px;
+    color: var(--gray-300);
+    padding: 16px;
+}
+
+.container .content form button {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    width: 90px;
+    height: 52px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.container .content form button:hover {
+    opacity: 0.9;
+}
+
+.statusContainer {
+    margin-top: 64px;
+    border-bottom: 1px solid var(--gray-400);
+    padding-bottom: 24px;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+}
+
+.createdTasks {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.createdTasks span:first-child {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--blue); 
+}
+
+.createdTasks span:last-child, 
+.finishedTasks span:last-child  {
+    background-color: var(--gray-400); 
+    width: 25px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: var(--white);
+}
+
+.finishedTasks  {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.finishedTasks span:first-child {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--purple);
+}
+
+.noTasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;    
+}
+
+.noTasks p {
+    color: var(--gray-300);
+    font-size: 16px;
+}
+
+.noTasksTitle {
+    font-weight: bold;
+    margin-top: 16px;
+}
+
+.noTasksDescription {
+    font-weight: normal;
+}

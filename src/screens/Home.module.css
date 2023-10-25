@@ -63,6 +63,8 @@
     margin-top: 64px;
     border-bottom: 1px solid var(--gray-400);
     padding-bottom: 24px;
+    max-height: 291px;
+    overflow-y: auto;
 }
 
 .status {

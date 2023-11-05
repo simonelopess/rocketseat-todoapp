@@ -37,3 +37,7 @@
 .container .trashIcon:hover {
     opacity: 0.7;
 }
+
+.textTask {
+    text-decoration: line-through ;
+}

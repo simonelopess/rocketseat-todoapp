@@ -9,14 +9,10 @@ type TaskItemsProps = {
 };
 
 export const Task = ({ data }: TaskItemsProps) => {
-  console.log("data", data);
   return (
     <div className={styles.container}>
       <input type="checkbox" name="check-item" />
-      <label>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-        Duis vel sed fames integer.
-      </label>
+      <label>{data.task}</label>
       <img src={trashIcon} alt="deletar item" className={styles.trashIcon} />
     </div>
   );

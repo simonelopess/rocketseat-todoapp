@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import LogoComponent from "../components/Logo/Logo";
 import Clipboard from "../assets/Clipboard.svg";
@@ -8,16 +8,20 @@ import styles from "./Home.module.css";
 import { Task } from "../components/Task";
 
 function Home() {
-  const [tasks, setStasks] = useState([
-    {
-      id: 1,
-      task: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    },
-    {
-      id: 1,
-      task: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    },
-  ]);
+  type taskProps = {
+    id: number;
+    task: string;
+  };
+
+  const [tasks, setTasks] = useState<taskProps[]>([]);
+  const [inputTask, setInputTask] = useState("");
+
+  const handleCreateTask = (event: FormEvent) => {
+    event.preventDefault();
+    const newTask = event.target.task.value;
+    setTasks([...tasks, { id: tasks.length, task: newTask }]);
+    setInputTask("");
+  };
 
   return (
     <>
@@ -26,9 +30,14 @@ function Home() {
           <LogoComponent />
         </header>
         <div className={styles.content}>
-          <form>
-            <input placeholder="Adicione uma nova tarefa" />
-            <button>
+          <form onSubmit={handleCreateTask}>
+            <input
+              placeholder="Adicione uma nova tarefa"
+              name="task"
+              value={inputTask}
+              onChange={(event) => setInputTask(event.target.value)}
+            />
+            <button type="submit">
               <span>Criar</span>
               <img src={plusIcon} alt="create todo item icon" />
             </button>
@@ -37,7 +46,7 @@ function Home() {
             <div className={styles.status}>
               <div className={styles.createdTasks}>
                 <span>Tarefas criadas</span>
-                <span>0</span>
+                <span>{tasks.length}</span>
               </div>
               <div className={styles.finishedTasks}>
                 <span>Concluídas</span>
@@ -58,7 +67,7 @@ function Home() {
           ) : (
             <>
               {tasks.map((task) => (
-                <Task data={task} />
+                <Task data={task} key={task.id} />
               ))}
             </>
           )}

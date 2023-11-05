@@ -16,11 +16,16 @@ function Home() {
   const [tasks, setTasks] = useState<taskProps[]>([]);
   const [inputTask, setInputTask] = useState("");
 
-  const handleCreateTask = (event: FormEvent) => {
+  const handleCreateTask = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newTask = event.target.task.value;
+    const newTask = (event.target as HTMLFormElement).task.value;
     setTasks([...tasks, { id: tasks.length, task: newTask }]);
     setInputTask("");
+  };
+
+  const handleDeleteTask = (id: number) => {
+    const arrayWithFileDeleted = tasks.filter((item) => item.id !== id);
+    setTasks(arrayWithFileDeleted);
   };
 
   return (
@@ -67,7 +72,11 @@ function Home() {
           ) : (
             <>
               {tasks.map((task) => (
-                <Task data={task} key={task.id} />
+                <Task
+                  data={task}
+                  key={task.id}
+                  handleDeteleTask={handleDeleteTask}
+                />
               ))}
             </>
           )}

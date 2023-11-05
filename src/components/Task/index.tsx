@@ -7,9 +7,10 @@ type TaskItemsProps = {
     id: number;
     task: string;
   };
+  handleDeteleTask: (id: number) => void;
 };
 
-export const Task = ({ data }: TaskItemsProps) => {
+export const Task = (props: TaskItemsProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -19,8 +20,15 @@ export const Task = ({ data }: TaskItemsProps) => {
   return (
     <div className={styles.container}>
       <input type="checkbox" name="checkItem" onChange={handleCheckboxChange} />
-      <label className={isChecked ? styles.textTask : ""}>{data.task}</label>
-      <img src={trashIcon} alt="deletar item" className={styles.trashIcon} />
+      <label className={isChecked ? styles.textTask : ""}>
+        {props.data.task}
+      </label>
+      <img
+        src={trashIcon}
+        alt="deletar item"
+        className={styles.trashIcon}
+        onClick={() => props.handleDeteleTask(props.data.id)}
+      />
     </div>
   );
 };

@@ -15,6 +15,7 @@ function Home() {
 
   const [tasks, setTasks] = useState<taskProps[]>([]);
   const [inputTask, setInputTask] = useState("");
+  const [isDoneCount, setIsDoneCount] = useState(0);
 
   const handleCreateTask = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -47,7 +48,11 @@ function Home() {
               <img src={plusIcon} alt="create todo item icon" />
             </button>
           </form>
-          <div className={styles.statusContainer}>
+          <div
+            className={`${
+              tasks.length === 0 ? styles.statusContainer : styles.withoutBorder
+            }`}
+          >
             <div className={styles.status}>
               <div className={styles.createdTasks}>
                 <span>Tarefas criadas</span>
@@ -55,7 +60,7 @@ function Home() {
               </div>
               <div className={styles.finishedTasks}>
                 <span>Concluídas</span>
-                <span>0</span>
+                <span>{isDoneCount}</span>
               </div>
             </div>
           </div>
@@ -76,6 +81,8 @@ function Home() {
                   data={task}
                   key={task.id}
                   handleDeteleTask={handleDeleteTask}
+                  setIsDoneCount={setIsDoneCount}
+                  isDoneCount={isDoneCount}
                 />
               ))}
             </>

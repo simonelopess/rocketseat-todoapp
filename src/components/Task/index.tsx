@@ -7,7 +7,9 @@ type TaskItemsProps = {
     id: number;
     task: string;
   };
+  isDoneCount: number;
   handleDeteleTask: (id: number) => void;
+  setIsDoneCount: (count: number) => void;
 };
 
 export const Task = (props: TaskItemsProps) => {
@@ -15,6 +17,14 @@ export const Task = (props: TaskItemsProps) => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+
+    if (!isChecked) {
+      props.setIsDoneCount(props.isDoneCount + 1);
+    }
+
+    if (isChecked && props.isDoneCount > 0) {
+      props.setIsDoneCount(props.isDoneCount - 1);
+    }
   };
 
   return (

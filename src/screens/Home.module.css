@@ -67,6 +67,15 @@
     overflow-y: auto;
 }
 
+
+.withoutBorder {
+    margin-top: 64px;
+    padding-bottom: 24px;
+    max-height: 291px;
+    overflow-y: auto;
+    border-bottom: none;
+}
+
 .status {
     display: flex;
     justify-content: space-between;
